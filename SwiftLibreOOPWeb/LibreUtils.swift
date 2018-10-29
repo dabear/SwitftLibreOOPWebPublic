@@ -8,13 +8,15 @@
 
 import Foundation
 
+
+
 class LibreUtils {
     
     public static var accessToken: String = "someaccesstoken"
    
     public static func CreateFakePatch(fromPatch patch:[UInt8]=LibreOOPDefaults.TestPatchAlwaysReturning63, raw_glucose: UInt16?=nil, raw_temp: UInt16?=nil) -> [UInt8]{
         
-        //glucoseByte2,glucoseByte1, tempByte2, tempByte2, flag1, flag2
+        //glucoseByte2,glucoseByte1, flag1, tempByte2, tempByte1, flag2
         var value: [UInt8] = [0xff, 0x3f, 0xc8, 0xfc, 0xd8, 0x00]
         
         if let raw_glucose = raw_glucose {

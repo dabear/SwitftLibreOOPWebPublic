@@ -116,3 +116,56 @@ func uploadMultiple(){
     
     
 }
+
+func getCalibrationExample1(){
+    let client = LibreOOPClient(accessToken: accessToken)
+    client.uploadCalibration(reading:  LibreOOPClient.readingToString(patch)) { (res, success, err) in
+        print("got calibrationresult: \(res), success: \(success), err: \(err)")
+        
+        if success, let uuid = res?.uuid{
+            client.getCalibrationStatusIntervalled(uuid: uuid, { (success, error, params) in
+                print("got calibrationstatusresult: \(success), error: \(error), params: \(params) ")
+                if success, let params = params{
+                    let runner = DerivedAlgorithmRunner(params);
+                    print("runner: \(runner)")
+                }
+            })
+        }
+        
+    }
+    
+}
+
+func algorithmCalc(){
+
+    
+    
+    LibreUtils.accessToken = accessToken
+    
+    //patch[4] = UInt8(0x04)
+    
+    //calculate glucose responses for the "corners" of this table, i.e. the tuples (raw glucose; taw temperature) being (1000; 9000), (3000; 9000), (1000; 6000) and (3000; 6000).
+    
+    
+    //1) first call this once per sensor
+    //algorithm parameters will be saved to file
+    //CalculateDerivedAlgorithm()
+    // comment out this function the first time
+    
+    //2) then call this
+    // A DerivedAlgorithmRunner will be created from parameters
+    // saved to file in the CalculateDerivedAlgorithm function
+    //TestAlgorithm()
+    
+    //or 2) call this for extensive tests
+    // A DerivedAlgorithmRunner will be created from parameters
+    // saved to file in the CalculateDerivedAlgorithm function
+    // This will create lots of fake patches, and send them in batches
+    // to both the libreoopweb algorithm and to the DerivedAlgorithmRunner.GetGlucoseValue() function
+    // Several files will be created under Your Documents Directory
+    // From cli, run: ls $HOME/Documents/GlucoseComparison
+    // When completed, create csv file by doing:
+    // From cli, run: cat  $HOME/Documents/GlucoseComparison/* > $HOME/GlucoseComparisonOverview.csv
+    // Then import $HOME/GlucoseComparisonOverview.csv into excel or google docs
+    //extensiveAlgorithmTest()
+}

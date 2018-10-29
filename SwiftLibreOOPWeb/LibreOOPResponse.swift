@@ -82,6 +82,41 @@ extension LibreReadingResult {
 }
 // MARK: Encode/decode helpers
 
+struct CalibrationResponse: Codable {
+    let error: Bool
+    let command: String
+    let result: CalibrationResult?
+    
+    enum CodingKeys: String, CodingKey {
+        case error = "Error"
+        case command = "Command"
+        case result = "Result"
+    }
+}
+
+struct CalibrationResult: Codable {
+    let createdOn, modifiedOn, uuid: String
+    let metadata: CalibrationMetadata
+    let requestids: [String]
+    
+    enum CodingKeys: String, CodingKey {
+        case createdOn = "CreatedOn"
+        case modifiedOn = "ModifiedOn"
+        case uuid, metadata, requestids
+    }
+}
+
+struct CalibrationMetadata: Codable {
+    let glucoseLowerBound, glucoseUpperBound, rawTemp1, rawTemp2: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case glucoseLowerBound = "GLUCOSE_LOWER_BOUND"
+        case glucoseUpperBound = "GLUCOSE_UPPER_BOUND"
+        case rawTemp1 = "RAW_TEMP1"
+        case rawTemp2 = "RAW_TEMP2"
+    }
+}
+
 class JSONNull: Codable {
     public init() {}
 
@@ -95,5 +130,35 @@ class JSONNull: Codable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         try container.encodeNil()
+    }
+}
+
+struct GetCalibrationStatus: Codable {
+    let error: Bool
+    let command: String
+    let result: GetCalibrationStatusResult?
+    
+    enum CodingKeys: String, CodingKey {
+        case error = "Error"
+        case command = "Command"
+        case result = "Result"
+    }
+}
+
+struct GetCalibrationStatusResult: Codable, CustomStringConvertible{
+    let status: String
+    let slopeSlope, slopeOffset, offsetOffset, offsetSlope: Double?
+    let uuid: String
+    
+    enum CodingKeys: String, CodingKey {
+        case status
+        case slopeSlope = "slope_slope"
+        case slopeOffset = "slope_offset"
+        case offsetOffset = "offset_offset"
+        case offsetSlope = "offset_slope"
+        case uuid
+    }
+    var description: String {
+        return "calibrationparams:: slopeslope: \(slopeSlope), slopeoffset: \(slopeOffset), offsetoffset: \(offsetOffset), offsetSlope: \(offsetSlope)"
     }
 }
