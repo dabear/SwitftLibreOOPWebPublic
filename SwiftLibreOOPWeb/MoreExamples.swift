@@ -119,7 +119,7 @@ func uploadMultiple(){
 
 func getCalibrationExample1(){
     let client = LibreOOPClient(accessToken: accessToken)
-    client.uploadCalibration(reading:  LibreOOPClient.readingToString(patch)) { (res, success, err) in
+    client.uploadCalibration(reading:  patch) { (res, success, err) in
         print("got calibrationresult: \(res), success: \(success), err: \(err)")
         
         if success, let uuid = res?.uuid{
