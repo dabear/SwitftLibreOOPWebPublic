@@ -127,7 +127,7 @@ func getCalibrationExample1(){
                 print("got calibrationstatusresult: \(success), error: \(error), params: \(params) ")
                 if success, let params = params{
                     let runner = DerivedAlgorithmRunner(params);
-                    print("runner: \(runner)")
+                    print("runner: \(runner) runner is valid for footer: \(params.isValidForFooterWithReverseCRCs)")
                 }
             })
         }

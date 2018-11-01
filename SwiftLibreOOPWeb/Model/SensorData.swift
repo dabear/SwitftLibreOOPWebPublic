@@ -63,6 +63,12 @@ struct SensorData {
             return SensorState.unknown
         }
     }
+    var reverseFooterCRC: UInt16? {
+        let b0 = UInt16(self.footer[1])
+        let b1 = UInt16(self.footer[0])
+        
+        return (b0 << 8) | UInt16(b1)
+    }
 
     init?(bytes: [UInt8], date: Date = Date()) {
         guard bytes.count == numberOfBytes else {

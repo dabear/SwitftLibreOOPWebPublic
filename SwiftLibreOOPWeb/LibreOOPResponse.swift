@@ -149,6 +149,7 @@ struct GetCalibrationStatusResult: Codable, CustomStringConvertible{
     let status: String
     let slopeSlope, slopeOffset, offsetOffset, offsetSlope: Double?
     let uuid: String
+    let isValidForFooterWithReverseCRCs: Double?
     
     enum CodingKeys: String, CodingKey {
         case status
@@ -157,8 +158,9 @@ struct GetCalibrationStatusResult: Codable, CustomStringConvertible{
         case offsetOffset = "offset_offset"
         case offsetSlope = "offset_slope"
         case uuid
+        case isValidForFooterWithReverseCRCs  = "isValidForFooterWithReverseCRCs"
     }
     var description: String {
-        return "calibrationparams:: slopeslope: \(slopeSlope), slopeoffset: \(slopeOffset), offsetoffset: \(offsetOffset), offsetSlope: \(offsetSlope)"
+        return "calibrationparams:: slopeslope: \(slopeSlope), slopeoffset: \(slopeOffset), offsetoffset: \(offsetOffset), offsetSlope: \(offsetSlope), isValidForFooterWithReverseCRCs: \(isValidForFooterWithReverseCRCs)"
     }
 }
