@@ -74,6 +74,8 @@ struct SensorReading{
     public var glucose: Int
     public var temperature: Int
     public var nr: Int //for debugging only
+    public var byte2=0
+    public var byte3=0
     public var sensordata : [UInt8]
     
 }
@@ -179,5 +181,126 @@ func extensiveAlgorithmTest(){
     } else {
         print("Could not create runner")
     }
+    
+}
+
+fileprivate func extensiveCalibrationTestDelegate(patch: SensorReading ) -> Bool{
+    
+    
+    print("processing patch \(patch.nr)")
+    
+    let client = LibreOOPClient(accessToken: LibreUtils.accessToken)
+    
+    print("patch for calibration: \(patch.sensordata)")
+    
+    
+    client.uploadCalibration(reading: patch.sensordata) { (response, success, errormessage) in
+        
+    
+        if(!success) {
+            NSLog("remote uploadCalibration: upload reading failed! \(errormessage)")
+            
+            return
+        }
+        
+        if let response = response{
+            let uuid = response.uuid
+            
+            print("calibration uuid received: " + uuid)
+            
+            client.getCalibrationStatusIntervalled(uuid: uuid,  { (success, errormessage, calibrationparams) in
+                NSLog("getCalibrationStatusIntervalled returned with success?: \(success), error: \(errormessage)")
+                var csvline = ""
+                
+                if success, let params = calibrationparams {
+                    csvline = "\(uuid)|\(patch.byte2)|\(patch.byte3)|\(params.offset_offset)|\(params.offset_slope)|\(params.slope_slope)|\(params.slope_offset)"
+                    
+                } else {
+                    csvline = "\(uuid)|\(patch.byte2)|\(patch.byte3)|NA|NA|NA|NA"
+                }
+                
+                writeGlucoseResult(folder: "GlucoseComparison", filename: "nr\(patch.nr).txt", result: csvline)
+                
+                
+            })
+            
+            
+            
+        } else {
+            print("get reponse failed")
+            
+        }
+        
+        
+    }
+    return true
+}
+
+
+func extensiveCalibrationTest(){
+    
+    
+    var patches = CreateDabearPatceshModifiedHeader()
+    
+    
+    print("patches count: \(patches.count)")
+   
+    
+    
+    //headers
+    writeGlucoseResult(folder: "GlucoseComparison", filename: "000_headers.txt", result: "uuid|byte2|byte3|offset_offset|offset_slope|slope_slope|slope_offset")
+    
+    
+    //we don't want to send more than about 7 calls to the algorithm per 30 seconds
+    //so group them by 15 and delay them
+    
+    let step = 7
+    let start = 0
+    
+    let delay = 35 //seconds
+    var groupdelay = 0
+    
+    /*//headers
+    print("test patches:")
+    print("\(SensorData(bytes: patches[10].sensordata)?.oopWebInterfaceInput())")
+    print("\(SensorData(bytes: patches[15].sensordata)?.oopWebInterfaceInput())")
+    
+    let temp = [
+        patches[10],
+        patches[15]
+                
+    ]
+    patches = temp*/
+    
+    for patchrangestart in stride(from: start, to:patches.count, by: step){
+        let patchrangeend = min(patchrangestart+step,  patches.count)
+        //print("start: \(patchrangestart)")
+        let relevantPatches = patches[patchrangestart..<patchrangeend]
+        //print("relevant patches: \(relevantPatches)\n")
+        
+        print("will send patches \(relevantPatches.first!.nr)-\(relevantPatches.last!.nr) with delay of \(groupdelay) seconds")
+        DispatchQueue.global().asyncAfter(deadline: .now() + .seconds(groupdelay)) { [relevantPatches] in
+            
+            //print("async: will send patches \(relevantPatches.first!.nr)-\(relevantPatches.last!.nr) with delay of \(groupdelay) seconds")
+            
+            for patch in relevantPatches{
+                _ = extensiveCalibrationTestDelegate(patch: patch)
+                
+            }
+            
+            
+            
+        }
+        
+        groupdelay += delay
+        
+    }
+    let now = Date()
+    let expectedRuntime = (groupdelay+delay)
+    let expectedEndDate = now + TimeInterval(exactly: expectedRuntime)!
+    print("time is now \(now), script execution will take about \(expectedRuntime) seconds and be complete about \(expectedEndDate )")
+    
+    
+    
     
 }

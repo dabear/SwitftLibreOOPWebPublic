@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+
 func CreateDabearPatch(raw_glucose:UInt16, raw_temp:UInt16) -> [UInt8]{
     
     // This is only used as a starting point
@@ -103,6 +105,32 @@ func CreateOnePatch(raw_glucose:UInt16, raw_temp:UInt16) -> [UInt8] {
     return choosenPatch(raw_glucose, raw_temp)
 }
 
+func CreateDabearPatceshModifiedHeader() -> [SensorReading] {
+    let g = 2700
+    let t = 8000
+    let dabear = CreateDabearPatch(raw_glucose: UInt16(g), raw_temp: UInt16(t))
+    
+    var patches = [SensorReading]()
+    
+    
+    var i = 1;
+    for byte2 in stride(from: 0, through:255, by: 48){
+        for byte3 in stride(from: 0, through:255, by: 48){
+            var patch = Array(dabear)
+            patch[2] = UInt8(byte2)
+            patch[3] = UInt8(byte3)
+            patch = SensorData(bytes: patch)!.bytesWithCorrectCRC()
+            print("Will generate fakepatch for rawglucose \(g) and rawtemperature \(t), byte2: \(byte2), byte3: \(byte3)")
+            patches.append(SensorReading(glucose: g, temperature: t, nr: i, byte2: byte2, byte3: byte3, sensordata: patch))
+            
+            i+=1
+            
+        }
+        
+    }
+    return patches
+}
+
 
 func GenerateFakePatches() -> [SensorReading]{
     
@@ -119,7 +147,7 @@ func GenerateFakePatches() -> [SensorReading]{
     for g in stride(from: glucosestart, through:glucoseend, by: glucosestep){
         for t in stride(from: tempstart, through:tempend, by: tempstep){
             print("Will generate fakepatch for rawglucose \(g) and rawtemperature \(t)")
-            patches.append(SensorReading(glucose: g, temperature: t, nr: i, sensordata: CreateOnePatch(raw_glucose: UInt16(g), raw_temp: UInt16(t))))
+            patches.append(SensorReading(glucose: g, temperature: t, nr: i, byte2: 0, byte3: 0, sensordata: CreateOnePatch(raw_glucose: UInt16(g), raw_temp: UInt16(t))))
             i+=1
         }
     }

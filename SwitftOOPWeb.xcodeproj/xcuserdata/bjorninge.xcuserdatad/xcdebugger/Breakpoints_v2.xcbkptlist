@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftLibreOOPWeb/LibreOOPClient.swift"
-            timestampString = "562790411.213012"
+            timestampString = "566768682.343263"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "109"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftLibreOOPWeb/LibreOOPClient.swift"
-            timestampString = "562790411.21398"
+            timestampString = "566768682.343658"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "201"
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftLibreOOPWeb/LibreOOPClient.swift"
-            timestampString = "562790411.214751"
+            timestampString = "566768682.3439161"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "208"
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftLibreOOPWeb/LibreOOPClient.swift"
-            timestampString = "562790411.215494"
+            timestampString = "566768682.3441581"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "221"
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftLibreOOPWeb/main.swift"
-            timestampString = "562790411.217316"
+            timestampString = "566768682.344456"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44">
+            startingLineNumber = "42"
+            endingLineNumber = "42">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -280,7 +280,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftLibreOOPWeb/AlgorithmCalc/DerivedAlgorithmRunner.swift"
-            timestampString = "562790411.21788"
+            timestampString = "566768682.344529"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
@@ -296,7 +296,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftLibreOOPWeb/AlgorithmCalc/DerivedAlgorithmRunner.swift"
-            timestampString = "562790411.218164"
+            timestampString = "566768682.344573"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
@@ -312,7 +312,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftLibreOOPWeb/AlgorithmCalc/DerivedAlgorithmRunner.swift"
-            timestampString = "562790411.218273"
+            timestampString = "566768682.344612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "62"
@@ -328,7 +328,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftLibreOOPWeb/LibreOOPClient.swift"
-            timestampString = "562790411.218375"
+            timestampString = "566768682.344651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "278"
@@ -344,7 +344,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftLibreOOPWeb/LibreOOPClient.swift"
-            timestampString = "562790411.218969"
+            timestampString = "566768682.344898"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
@@ -360,7 +360,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftLibreOOPWeb/LibreOOPClient.swift"
-            timestampString = "562790411.21946"
+            timestampString = "566768682.345134"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
@@ -376,13 +376,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftLibreOOPWeb/Model/SensorData.swift"
-            timestampString = "562790411.219946"
+            timestampString = "563536775.749211"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "70"
             endingLineNumber = "70"
             landmarkName = "reverseFooterCRC"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftLibreOOPWeb/extrasensors.swift"
+            timestampString = "566764044.335785"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1520"
+            endingLineNumber = "1520"
+            landmarkName = "extrasensors()"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwitftOOPWeb.extrasensors() -&gt; ()"
+                  moduleName = "SwitftOOPWeb"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bjorninge/Code/SwiftLibreOOPWeb/SwiftLibreOOPWeb/extrasensors.swift"
+                  timestampString = "563493902.471477"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1521"
+                  endingLineNumber = "1521"
+                  offsetFromSymbolStart = "6391">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwitftOOPWeb.extrasensors() -&gt; ()"
+                  moduleName = "SwitftOOPWeb"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bjorninge/Code/SwiftLibreOOPWeb/SwiftLibreOOPWeb/extrasensors.swift"
+                  timestampString = "563493902.47447"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1521"
+                  endingLineNumber = "1521"
+                  offsetFromSymbolStart = "7617">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -259,7 +259,7 @@ class LibreOOPClient {
         return ret
     }
     public func uploadCalibration(reading: [UInt8], _ completion:@escaping (( _ resp: CalibrationResult?, _ success: Bool, _ errorMessage: String) -> Void)) {
-        return uploadCalibration(reading: LibreOOPClient.readingToString(patch), completion)
+        return uploadCalibration(reading: LibreOOPClient.readingToString(reading), completion)
     }
     
     public func uploadCalibration(reading: String, _ completion:@escaping (( _ resp: CalibrationResult?, _ success: Bool, _ errorMessage: String) -> Void)) {
@@ -367,8 +367,10 @@ class LibreOOPClient {
                 
                 if let result = response.result, result.status == "complete" {
                     print("calibration  ready")
+                    var params : DerivedAlgorithmParameters? = nil
+                    params = DerivedAlgorithmParameters(slope_slope: result.slopeSlope ?? 0, slope_offset: result.slopeOffset ?? 0, offset_slope: result.offsetSlope ?? 0, offset_offset: result.offsetOffset ?? 0, isValidForFooterWithReverseCRCs: result.isValidForFooterWithReverseCRCs!)
                     
-                    let params = DerivedAlgorithmParameters(slope_slope: result.slopeSlope!, slope_offset: result.slopeOffset!, offset_slope: result.offsetSlope!, offset_offset: result.offsetOffset!, isValidForFooterWithReverseCRCs: result.isValidForFooterWithReverseCRCs!)
+                    
                     completion(true, "complete", params )
                     return
                 }

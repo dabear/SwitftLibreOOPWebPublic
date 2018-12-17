@@ -24,13 +24,13 @@ let accessToken = "someName-FollowedByRandomNumberGivenToYouByLibreoopwebAdmin"
  
  */
 LibreUtils.accessToken = accessToken
-
+/*
 //patch[4] = UInt8(0x04)
 var result  = LibreUtils.GetParsedOOPResult(patch: patch)
 
-print("result? \(result)")
+print("result? \(result)")*/
 
-
+extensiveCalibrationTest()
 
 
 
