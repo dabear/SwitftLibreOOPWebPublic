@@ -14,6 +14,7 @@ class LibreOOPClient {
     private var statusEndpoint: String   // = "https://libreoopweb.azurewebsites.net/api/GetStatus"
     private var calibrationEndpoint: String
     private var calibrationStatusEndpoint: String
+    private var verifyTokenEndpoint: String
 
     init(accessToken: String, site: String = "https://libreoopweb.azurewebsites.net") {
         self.accessToken = accessToken
@@ -21,7 +22,7 @@ class LibreOOPClient {
         self.statusEndpoint = site + "/api/GetStatus"
         self.calibrationEndpoint = site + "/api/CreateCalibrationRequestAsync"
         self.calibrationStatusEndpoint = site + "/api/GetCalibrationStatus"
-        
+        self.verifyTokenEndpoint = site + "/api/verifyToken"
     }
 
     public static func readingToString(_ a: [UInt8]) -> String {
@@ -125,6 +126,13 @@ class LibreOOPClient {
             }
         }
         return nil
+    }
+    
+    public func verifyToken( _ completion:@escaping (( _ success: Bool) -> Void)) {
+        
+        postToServer({ (data, response, success) in
+            completion(response == "valid")
+        }, postURL: verifyTokenEndpoint, postparams: ["accessToken": self.accessToken])
     }
 
     private func getStatus(uuid: String, _ completion:@escaping ((  _ success: Bool, _ message: String, _ response: String?, _ newState: String? ) -> Void)) {
