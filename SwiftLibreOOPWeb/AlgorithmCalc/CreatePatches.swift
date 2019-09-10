@@ -133,14 +133,24 @@ func CreateDabearPatceshModifiedHeader() -> [SensorReading] {
 
 
 func GenerateFakePatches() -> [SensorReading]{
-    
+    //1000|4800
+ //ok for generaintg comparisions
     let glucosestart = 1000
     let glucoseend = 3000
-    let glucosestep = 20
+    let glucosestep = 60
     
     let tempstart = 6000
     let tempend = 9000
-    let tempstep = 20 //default: 100
+    let tempstep = 120 //default: 100 */
+    
+    /*let glucosestart = 2100
+    let glucoseend = 2200
+    let glucosestep = 50
+    
+    let tempstart = 6000
+    let tempend = 7120
+    let tempstep = 120*/
+    
     var patches = [SensorReading]()
     
     var i=0

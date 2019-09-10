@@ -7,15 +7,8 @@
 //
 import Foundation
 
-// Example Libre patch contents.
-// This would typically by a full readout of the sensor from a blureader,blucon, miaomiao or some other nfc to bluetooth bridge.
-var patch: [UInt8] = LibreOOPDefaults.TestPatchAlwaysReturning63;
 
-
-
-//note that the accesstoken will be given to you by the libreoopweb admin
-let accessToken = "someName-FollowedByRandomNumberGivenToYouByLibreoopwebAdmin"
-
+var accessToken = "foo"
 
 
 /*
@@ -29,11 +22,32 @@ LibreUtils.accessToken = accessToken
 var result  = LibreUtils.GetParsedOOPResult(patch: patch)
 
 print("result? \(result)")*/
+/*
+var patches = GenerateFakePatches()
+let dir = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("2018_10_23_Sensor", isDirectory: true)
 
-extensiveCalibrationTest()
+for reading in patches {
+    
+    
+    let pointer = UnsafeBufferPointer(start:reading.sensordata, count:reading.sensordata.count)
+    let data = Data(buffer:pointer)
+    let filename = "2018_10_23_Sensor-reading-\(reading.nr)-rawglucose-\(reading.glucose)-rawtemp\(reading.temperature).txt"
+    let url = dir.appendingPathComponent(filename, isDirectory: false)
+    try! data.write(to:  url)
+}
+*/
+//LibreUtils.accessToken = "abcd"
+//extensiveAlgorithmTest()
+
+//var minutes = SensorData(bytes: LibreOOPDefaults.TestPatchAlwaysReturning63)!.minutesSinceStart
 
 
 
+
+
+var data = SensorData(bytes: LibreOOPDefaults.TestPatchAlwaysReturning63)!
+data.minutesSinceStart = 7591
+print("modified minutes is: \(data.minutesSinceStart)")
 
 //This semaphore wait is neccessary when running as a mac os cli program. Consider removing this in a GUI app
 //it kinda works like python's input() or raw_input() in a cli program, except it doesn't accept input, ofcourse..

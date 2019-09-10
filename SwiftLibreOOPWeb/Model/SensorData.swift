@@ -8,6 +8,21 @@
 
 import Foundation
 
+extension Int {
+    func toUInt8Array() -> [UInt8]{
+        var array: [UInt8] = []
+        var n = self
+        while n > 0
+        {
+            array.append(UInt8(n & 0xff))
+            n >>= 8
+        }
+        
+        return array
+    }
+    
+}
+
 /// Structure for data from Freestyle Libre sensor.
 ///
 /// To be initialized with the bytes as read via nfc. Provides all derived data.
@@ -20,13 +35,25 @@ struct SensorData {
     /// Subarray of 24 header bytes
     let header: [UInt8]
     /// Subarray of 296 body bytes
-    let body: [UInt8]
+    private(set) var body: [UInt8]
     /// Subarray of 24 footer bytes
     let footer: [UInt8]
     /// Date when data was read from sensor
     let date: Date
     /// Minutes (approx) since start of sensor
-    let minutesSinceStart: Int
+    var minutesSinceStart: Int {
+        get {
+            return Int(body[293]) << 8 + Int(body[292])
+        } set {
+            
+            let ts = newValue.toUInt8Array()
+            let t0 = ts.first ?? 0
+            let t1 = ts.dropFirst().first ?? 0
+            
+            body[292] = t0
+            body[293] = t1
+        }
+    }
     /// Index on the next block of trend data that the sensor will measure and store
     let nextTrendBlock: Int
     /// Index on the next block of history data that the sensor will create from trend data and store
@@ -87,7 +114,8 @@ struct SensorData {
 
         self.nextTrendBlock = Int(body[2])
         self.nextHistoryBlock = Int(body[3])
-        self.minutesSinceStart = Int(body[293]) << 8 + Int(body[292])
+        //self.minutesSinceStart = Int(body[293]) << 8 + Int(body[292])
+        //print("int(\(body[293])) << 8 + Int(\(body[292]))")
     }
 
     /// Get array of 16 trend glucose measurements. 

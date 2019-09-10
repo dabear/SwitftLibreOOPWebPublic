@@ -15,7 +15,6 @@
 		27832B782178E762000FF6DD /* CreatePatches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27832B772178E762000FF6DD /* CreatePatches.swift */; };
 		27832B7A2178E78F000FF6DD /* DerivedAlgorithmRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27832B792178E78F000FF6DD /* DerivedAlgorithmRunner.swift */; };
 		27832B7C2178E8C0000FF6DD /* AlgorithmTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27832B7B2178E8C0000FF6DD /* AlgorithmTester.swift */; };
-		278FCD5A2188C5F7004F184F /* extrasensors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278FCD592188C5F7004F184F /* extrasensors.swift */; };
 		27BA004321734D80005B3E1D /* LibreUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BA004221734D80005B3E1D /* LibreUtils.swift */; };
 		27BA004521735450005B3E1D /* MoreExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BA004421735450005B3E1D /* MoreExamples.swift */; };
 		27D0586B208E4B41000A05D7 /* LibreOOPDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D0586A208E4B41000A05D7 /* LibreOOPDefaults.swift */; };
@@ -47,7 +46,6 @@
 		27832B772178E762000FF6DD /* CreatePatches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePatches.swift; sourceTree = "<group>"; };
 		27832B792178E78F000FF6DD /* DerivedAlgorithmRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerivedAlgorithmRunner.swift; sourceTree = "<group>"; };
 		27832B7B2178E8C0000FF6DD /* AlgorithmTester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmTester.swift; sourceTree = "<group>"; };
-		278FCD592188C5F7004F184F /* extrasensors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extrasensors.swift; sourceTree = "<group>"; };
 		27BA004221734D80005B3E1D /* LibreUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibreUtils.swift; sourceTree = "<group>"; };
 		27BA004421735450005B3E1D /* MoreExamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreExamples.swift; sourceTree = "<group>"; };
 		27D0586A208E4B41000A05D7 /* LibreOOPDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibreOOPDefaults.swift; sourceTree = "<group>"; };
@@ -91,7 +89,6 @@
 				27D0586A208E4B41000A05D7 /* LibreOOPDefaults.swift */,
 				2752E1BB207AA61400BCDC08 /* LibreOOPResponse.swift */,
 				2752E1AE207A1B5B00BCDC08 /* main.swift */,
-				278FCD592188C5F7004F184F /* extrasensors.swift */,
 				2752E1B5207A1ED900BCDC08 /* LibreOOPClient.swift */,
 				2752E1B7207A4E6B00BCDC08 /* LibreOOPWebExtensions.swift */,
 				C66625C4208B27A40044D0B1 /* Model */,
@@ -196,7 +193,6 @@
 				C66625C1208B1EB10044D0B1 /* SensorState.swift in Sources */,
 				27832B7C2178E8C0000FF6DD /* AlgorithmTester.swift in Sources */,
 				C66625BF208B1E820044D0B1 /* SensorData.swift in Sources */,
-				278FCD5A2188C5F7004F184F /* extrasensors.swift in Sources */,
 				27D0586B208E4B41000A05D7 /* LibreOOPDefaults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

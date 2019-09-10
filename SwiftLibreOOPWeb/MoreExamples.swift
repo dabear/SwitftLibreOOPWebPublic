@@ -117,7 +117,7 @@ func uploadMultiple(){
     
 }
 
-func getCalibrationExample1(){
+/*func getCalibrationExample1(){
     let client = LibreOOPClient(accessToken: accessToken)
     client.uploadCalibration(reading:  patch) { (res, success, err) in
         print("got calibrationresult: \(res), success: \(success), err: \(err)")
@@ -134,7 +134,7 @@ func getCalibrationExample1(){
         
     }
     
-}
+}*/
 
 func algorithmCalc(){
 

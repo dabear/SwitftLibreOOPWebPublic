@@ -17,7 +17,7 @@ struct OOPCurrentValue: Codable {
     let timestamp: Int
 
     enum CodingKeys: String, CodingKey {
-        case currentTrend = "currenTrend"  // TODO: rename currenTrend to currentTrend
+        case currentTrend = "currentTrend"  // TODO: rename currenTrend to currentTrend
         case currentBg
         case currentTime
         case historyValues = "historicBg"
