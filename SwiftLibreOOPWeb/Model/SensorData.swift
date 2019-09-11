@@ -8,19 +8,11 @@
 
 import Foundation
 
-extension Int {
-    func toUInt8Array() -> [UInt8]{
-        var array: [UInt8] = []
-        var n = self
-        while n > 0
-        {
-            array.append(UInt8(n & 0xff))
-            n >>= 8
-        }
-        
-        return array
-    }
-    
+
+
+fileprivate func toByteArray<T>(_ value: T) -> [UInt8] {
+    var value = value
+    return withUnsafeBytes(of: &value) { Array($0) }
 }
 
 /// Structure for data from Freestyle Libre sensor.
@@ -46,12 +38,12 @@ struct SensorData {
             return Int(body[293]) << 8 + Int(body[292])
         } set {
             
-            let ts = newValue.toUInt8Array()
-            let t0 = ts.first ?? 0
-            let t1 = ts.dropFirst().first ?? 0
+            let val = newValue <= 0 ? 0 : newValue
+            let t  = toByteArray(val >= 65535 ? 65535 : newValue)
             
-            body[292] = t0
-            body[293] = t1
+            body[292] = t.first ?? 0
+            body[293] = t.dropFirst().first ?? 0
+            
         }
     }
     /// Index on the next block of trend data that the sensor will measure and store
