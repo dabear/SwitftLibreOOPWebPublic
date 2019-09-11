@@ -62,6 +62,10 @@ struct SensorData {
     var hasValidFooterCRC: Bool {
         return Crc.hasValidCrc16InFirstTwoBytes(footer)
     }
+    
+    var hasValidCRCs: Bool {
+        return hasValidHeaderCRC && hasValidBodyCRC && hasValidFooterCRC
+    }
 
     /// Sensor state (ready, failure, starting etc.)
     var state: SensorState {
@@ -196,6 +200,14 @@ struct SensorData {
     /// - Returns: 344 bytes of FRAM with correct crcs
     func bytesWithCorrectCRC() -> [UInt8] {
         return Crc.bytesWithCorrectCRC(header) + Crc.bytesWithCorrectCRC(body) + Crc.bytesWithCorrectCRC(footer)
+    }
+    
+    /// Returns a new SensorData of 344 bytes of FRAM with correct crc for header, body and footer.
+    ///
+    /// Usefull, if some bytes are modified in order to investigate how the OOP algorithm handles this modification.
+    /// - Returns: 344 bytes of FRAM with correct crcs
+    func sensorDataWithCorrectCRC() -> SensorData {
+        return SensorData(bytes: self.bytesWithCorrectCRC())!
     }
 
 }

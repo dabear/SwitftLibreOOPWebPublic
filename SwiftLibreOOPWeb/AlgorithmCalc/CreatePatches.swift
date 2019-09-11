@@ -131,6 +131,22 @@ func CreateDabearPatceshModifiedHeader() -> [SensorReading] {
     return patches
 }
 
+func GenerateMinutePatches() -> [SensorData]{
+    
+    var patches = [SensorData]()
+    
+    let b64 = "UHqIEwMAAAAAAAAAAAAAAAAAAAAAAAAAEdgHAV0FyJxYgFgFyJwYgFQFyJhYgFQFyJwYgFoFyLhYgLYFyNRYgLMFyNxYgI0FyIhYgI8FyKxYgI8FyLRYgH8FyKQYgHoFyKhYgHgFyKhYgHAFyJgYgGcFyLBYgGAFyKhYgGgFyLBYgCYGyBBagJsFyCBagNAEyNxZgC8EyORZgJoDyIhZgBADyLBZgJwCyDxagFUCyMRZgPkCyKxZgIcDyIRZgIgDyGRZgEoDyIxZgDwDyMxZgNkCyCRagJ0CyLxZgHcCyHxZgMgCyGBZgBsDyPxZgGMDyMRZgKYDyDRagNwCyNhZgIwCyJhYgMcCyOBYgIQCyMxYgOwCyHRYgKIDyDgYgFUEyCxYgIIEyEhYgAkFyGwXgFwFyPRXgE0FiLJYgHgYAAB5twABwQcbURQHloBaAO2mEHQayAQN2Wg="
+    let template = b64.base64Decoded()!
+    
+    for minute in stride(from: 1, to: 2881, by: 20) {
+        var data = SensorData(bytes: template)!
+        data.minutesSinceStart = minute
+        patches.append(data.sensorDataWithCorrectCRC())
+    }
+    
+    return patches
+    
+}
 
 func GenerateFakePatches() -> [SensorReading]{
     //1000|4800
