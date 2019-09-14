@@ -176,7 +176,7 @@ fileprivate func testMinuteCounterAffectingResultDelegate(sensorData: SensorData
 
 
 func testMinuteCounterAffectingResult() {
-    var patches : [SensorData] = Array(GenerateMinutePatches())//.prefix(2))
+    var patches : [SensorData] = Array(GenerateMinutePatches().prefix(10))
     
     
     

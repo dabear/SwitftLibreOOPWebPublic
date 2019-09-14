@@ -7,9 +7,9 @@
 //
 import Foundation
 
+let accessToken = ""
 
-
-LibreUtils.accessToken = "foo-bar"
+LibreUtils.accessToken = accessToken
 
 testMinuteCounterAffectingResult()
 

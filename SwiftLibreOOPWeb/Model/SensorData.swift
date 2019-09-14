@@ -15,6 +15,19 @@ fileprivate func toByteArray<T>(_ value: T) -> [UInt8] {
     return withUnsafeBytes(of: &value) { Array($0) }
 }
 
+fileprivate func estimateTrendIndex(minutesSinceStart: Int) -> UInt8 {
+    return UInt8((minutesSinceStart - 1 ) % 16)
+}
+
+fileprivate func estimateHistoryIndex(minutesSinceStart: Int) -> UInt8 {
+    let min = minutesSinceStart - 1
+    let quot = min/15
+    
+    return UInt8(quot % 32)
+    
+}
+
+
 /// Structure for data from Freestyle Libre sensor.
 ///
 /// To be initialized with the bytes as read via nfc. Provides all derived data.
@@ -25,7 +38,7 @@ struct SensorData {
     /// Array of 344 bytes as read via nfc
     let bytes: [UInt8]
     /// Subarray of 24 header bytes
-    let header: [UInt8]
+    private(set) var header: [UInt8]
     /// Subarray of 296 body bytes
     private(set) var body: [UInt8]
     /// Subarray of 24 footer bytes
@@ -38,14 +51,23 @@ struct SensorData {
             return Int(body[293]) << 8 + Int(body[292])
         } set {
             
-            let val = newValue <= 0 ? 0 : newValue
-            let t  = toByteArray(val >= 65535 ? 65535 : val)
+            var val = (newValue <= 0 ? 0 : newValue)
+            if val >= 65535 {
+                val = 65535
+            }
+            let t  = toByteArray(val)
             
             
             body[292] = t.first ?? 0
             body[293] = t.dropFirst().first ?? 0
-            print("set to new minutessincestart to: ")
-            debugPrint(body[292...293])
+            
+            
+            // when updating minutesSinceStart, it is also necessary to update trend and history indexes
+            
+            body[2] = estimateTrendIndex(minutesSinceStart: val)
+            body[3] = estimateHistoryIndex(minutesSinceStart: val)
+            
+            
             
         }
     }

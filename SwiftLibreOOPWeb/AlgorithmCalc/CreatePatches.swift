@@ -136,7 +136,7 @@ func GenerateMinutePatches() -> [SensorData]{
     var patches = [SensorData]()
     
     let template = LibreOOPDefaults.TestPatchAlwaysReturning63
-    var origMinutes = SensorData(bytes: template)!.minutesSinceStart
+    let origMinutes = SensorData(bytes: template)!.minutesSinceStart
     
     
     print("minutecounter orig: \(origMinutes)")
