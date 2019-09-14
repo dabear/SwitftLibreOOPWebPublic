@@ -135,10 +135,12 @@ func GenerateMinutePatches() -> [SensorData]{
     
     var patches = [SensorData]()
     
-    let b64 = "UHqIEwMAAAAAAAAAAAAAAAAAAAAAAAAAEdgHAV0FyJxYgFgFyJwYgFQFyJhYgFQFyJwYgFoFyLhYgLYFyNRYgLMFyNxYgI0FyIhYgI8FyKxYgI8FyLRYgH8FyKQYgHoFyKhYgHgFyKhYgHAFyJgYgGcFyLBYgGAFyKhYgGgFyLBYgCYGyBBagJsFyCBagNAEyNxZgC8EyORZgJoDyIhZgBADyLBZgJwCyDxagFUCyMRZgPkCyKxZgIcDyIRZgIgDyGRZgEoDyIxZgDwDyMxZgNkCyCRagJ0CyLxZgHcCyHxZgMgCyGBZgBsDyPxZgGMDyMRZgKYDyDRagNwCyNhZgIwCyJhYgMcCyOBYgIQCyMxYgOwCyHRYgKIDyDgYgFUEyCxYgIIEyEhYgAkFyGwXgFwFyPRXgE0FiLJYgHgYAAB5twABwQcbURQHloBaAO2mEHQayAQN2Wg="
-    let template = b64.base64Decoded()!
+    let template = LibreOOPDefaults.TestPatchAlwaysReturning63
+    var origMinutes = SensorData(bytes: template)!.minutesSinceStart
     
-    for minute in stride(from: 1, to: 2881, by: 20) {
+    
+    print("minutecounter orig: \(origMinutes)")
+    for minute in stride(from: 1, to: 266*4, by: 1) {
         var data = SensorData(bytes: template)!
         data.minutesSinceStart = minute
         patches.append(data.sensorDataWithCorrectCRC())

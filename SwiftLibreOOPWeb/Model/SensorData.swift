@@ -39,10 +39,13 @@ struct SensorData {
         } set {
             
             let val = newValue <= 0 ? 0 : newValue
-            let t  = toByteArray(val >= 65535 ? 65535 : newValue)
+            let t  = toByteArray(val >= 65535 ? 65535 : val)
+            
             
             body[292] = t.first ?? 0
             body[293] = t.dropFirst().first ?? 0
+            print("set to new minutessincestart to: ")
+            debugPrint(body[292...293])
             
         }
     }

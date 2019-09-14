@@ -79,6 +79,8 @@ final class Crc {
         correctedBytes[1] = UInt8(calculatedCrc & 0x00FF)
         return correctedBytes
     }
+    
+    
 
 }
 
