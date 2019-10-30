@@ -140,7 +140,7 @@ func GenerateMinutePatches() -> [SensorData]{
     
     
     print("minutecounter orig: \(origMinutes)")
-    for minute in stride(from: 1, to: 266*4, by: 1) {
+    for minute in stride(from: 65, to: 266*4, by: 1) {
         var data = SensorData(bytes: template)!
         data.minutesSinceStart = minute
         patches.append(data.sensorDataWithCorrectCRC())
@@ -150,16 +150,16 @@ func GenerateMinutePatches() -> [SensorData]{
     
 }
 
-func GenerateFakePatches() -> [SensorReading]{
+func GenerateFakePatches(from patch: [UInt8]) -> [SensorReading]{
     //1000|4800
  //ok for generaintg comparisions
     let glucosestart = 1000
     let glucoseend = 3000
-    let glucosestep = 60
+    let glucosestep = 400
     
     let tempstart = 6000
     let tempend = 9000
-    let tempstep = 120 //default: 100 */
+    let tempstep = 400 //default: 100 */
     
     /*let glucosestart = 2100
     let glucoseend = 2200
@@ -175,7 +175,7 @@ func GenerateFakePatches() -> [SensorReading]{
     for g in stride(from: glucosestart, through:glucoseend, by: glucosestep){
         for t in stride(from: tempstart, through:tempend, by: tempstep){
             print("Will generate fakepatch for rawglucose \(g) and rawtemperature \(t)")
-            patches.append(SensorReading(glucose: g, temperature: t, nr: i, byte2: 0, byte3: 0, sensordata: CreateOnePatch(raw_glucose: UInt16(g), raw_temp: UInt16(t))))
+            patches.append(SensorReading(glucose: g, temperature: t, nr: i, byte2: 0, byte3: 0, sensordata: LibreUtils.CreateFakePatch(fromPatch: patch, raw_glucose: UInt16(g), raw_temp: UInt16(t))))
             i+=1
         }
     }

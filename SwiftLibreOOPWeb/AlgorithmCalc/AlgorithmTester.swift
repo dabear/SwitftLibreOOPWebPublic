@@ -81,7 +81,7 @@ struct SensorReading{
 }
 
 
-fileprivate func extensiveAlgorithmTestDelegate( patch: SensorReading ) {
+fileprivate func extensiveAlgorithmTestDelegate( patch: SensorReading, runner: DerivedAlgorithmRunner ) {
     
     
     print("processing patch \(patch.nr)")
@@ -104,20 +104,21 @@ fileprivate func extensiveAlgorithmTestDelegate( patch: SensorReading ) {
                 NSLog("GetStatusIntervalled returned with success?: \(success), error: \(errormessage), response: \(String(describing: oopCurrentValue))), newState: \(newState)")
                 //NSLog("GetStatusIntervalled  newState: \(newState)")
                 
-                /*
-                var res1 = "Uknown"
+
+
                 var diff = "Uknown"
                 
-                let res2 = runner.GetGlucoseValue(from_raw_glucose: patch.glucose, raw_temp: patch.temperature)
+                let runnerres = runner.GetGlucoseValue(from_raw_glucose: patch.glucose, raw_temp: patch.temperature)
                 
                 if let bg = oopCurrentValue?.currentBg {
-                    res1 = "\(bg)"
-                    diff = "\(bg - res2)"
-                }*/
+
+                    diff = "\(bg - runnerres)"
+                }
                 
                 let bg = oopCurrentValue?.currentBg ?? -1
                 
-                let csvline = "\(patch.glucose)|\(patch.temperature)|\(bg)|\(uuid)"
+                let csvline = "\(patch.glucose)|\(patch.temperature)|\(bg)|\(runnerres)|\(diff)|\(uuid)"
+
                 writeGlucoseResult(folder: "GlucoseComparison", filename: "nr\(patch.nr).txt", result: csvline)
                 
                 
@@ -223,11 +224,13 @@ func extensiveAlgorithmTest(){
     //if let runner = runner {
         print("Created runner successfully")
         
-        var patches = GenerateFakePatches()
-        
+        var patches = GenerateFakePatches(from: LibreOOPDefaults.TestPatchAlwaysReturning63)
+
+    //runner is a previously saved version for this particular sensor:
+        let runner = DerivedAlgorithmRunner.CreateInstanceFromParamsFile()!
         //we don't want to send more than 15 calls to the algorithm per 30 seconds
         //so group them by 15 and delay them
-        
+
         let step = 15
         let start = 0
         
@@ -235,7 +238,7 @@ func extensiveAlgorithmTest(){
         var groupdelay = 0
         
         //headers
-        writeGlucoseResult(folder: "GlucoseComparison", filename: "000_headers.txt", result: "rawglucose|rawtemperature|oopalgoresult-pre2019|oopwebuid")
+        writeGlucoseResult(folder: "GlucoseComparison", filename: "000_headers.txt", result: "rawglucose|rawtemperature|oopalgoresult|derivedalgorunner|diff||oopwebuid")
         
         for patchrangestart in stride(from: start, to:patches.count, by: step){
             let patchrangeend = min(patchrangestart+step,  patches.count)
@@ -249,7 +252,7 @@ func extensiveAlgorithmTest(){
                 //print("async: will send patches \(relevantPatches.first!.nr)-\(relevantPatches.last!.nr) with delay of \(groupdelay) seconds")
                 
                 for  patch in relevantPatches{
-                    extensiveAlgorithmTestDelegate(patch: patch)
+                    extensiveAlgorithmTestDelegate(patch: patch, runner: runner)
                     
                 }
                 

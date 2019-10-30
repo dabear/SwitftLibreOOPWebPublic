@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftLibreOOPWeb/LibreOOPClient.swift"
-            timestampString = "590014767.201993"
+            timestampString = "594076143.337096"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "109"
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftLibreOOPWeb/LibreOOPClient.swift"
-            timestampString = "590014767.202063"
+            timestampString = "594076143.337163"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
             landmarkName = "uploadReading(reading:oldState:sensorStartTimestamp:sensorScanTimestamp:currentUtcOffset:_:)"
             landmarkType = "7">
             <Locations>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftLibreOOPWeb/LibreOOPClient.swift"
-            timestampString = "590014767.202112"
+            timestampString = "594076143.3372101"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
             landmarkName = "uploadReading(reading:oldState:sensorStartTimestamp:sensorScanTimestamp:currentUtcOffset:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftLibreOOPWeb/LibreOOPClient.swift"
-            timestampString = "590014767.202157"
+            timestampString = "594076143.337252"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
             landmarkName = "uploadReading(reading:oldState:sensorStartTimestamp:sensorScanTimestamp:currentUtcOffset:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftLibreOOPWeb/MoreExamples.swift"
-            timestampString = "590190727.7557729"
+            timestampString = "590228972.965404"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
@@ -250,41 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftLibreOOPWeb/AlgorithmCalc/AlgorithmCalc.swift"
-            timestampString = "562790411.216974"
+            timestampString = "594130440.405468"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "CalculateDerivedAlgorithm()"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SwiftLibreOOPWeb/main.swift"
-            timestampString = "590190727.755872"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SwiftLibreOOPWeb/AlgorithmCalc/AlgorithmCalc.swift"
-            timestampString = "562790411.217666"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "CalculateDerivedAlgorithm()"
             landmarkType = "9">
          </BreakpointContent>
@@ -296,11 +266,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftLibreOOPWeb/AlgorithmCalc/AlgorithmCalc.swift"
-            timestampString = "562790411.2177809"
+            timestampString = "594130440.4058549"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "CalculateDerivedAlgorithm()"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftLibreOOPWeb/AlgorithmCalc/AlgorithmCalc.swift"
+            timestampString = "594130440.406128"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "CalculateDerivedAlgorithm()"
             landmarkType = "9">
          </BreakpointContent>
@@ -312,7 +298,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftLibreOOPWeb/AlgorithmCalc/DerivedAlgorithmRunner.swift"
-            timestampString = "589728481.942662"
+            timestampString = "594080438.452531"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
@@ -328,7 +314,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftLibreOOPWeb/AlgorithmCalc/DerivedAlgorithmRunner.swift"
-            timestampString = "589728481.942714"
+            timestampString = "594080438.45258"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
@@ -344,7 +330,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftLibreOOPWeb/AlgorithmCalc/DerivedAlgorithmRunner.swift"
-            timestampString = "589728481.942755"
+            timestampString = "594080438.452625"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "62"
@@ -360,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftLibreOOPWeb/LibreOOPClient.swift"
-            timestampString = "590014767.202419"
+            timestampString = "594076143.3375731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
             landmarkName = "uploadCalibration(reading:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -376,7 +362,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftLibreOOPWeb/LibreOOPClient.swift"
-            timestampString = "590014767.202464"
+            timestampString = "594076143.337617"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
@@ -392,7 +378,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftLibreOOPWeb/LibreOOPClient.swift"
-            timestampString = "590014767.202507"
+            timestampString = "594076143.337666"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
@@ -408,7 +394,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftLibreOOPWeb/Model/SensorData.swift"
-            timestampString = "590190727.756008"
+            timestampString = "591226111.452086"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "118"
@@ -471,12 +457,14 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SwiftLibreOOPWeb/main.swift"
-            timestampString = "590190727.7563829"
+            filePath = "SwiftLibreOOPWeb/AlgorithmCalc/AlgorithmTester.swift"
+            timestampString = "594130440.406566"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28">
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "extensiveAlgorithmTestDelegate(patch:runner:)"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -485,13 +473,61 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SwiftLibreOOPWeb/AlgorithmCalc/AlgorithmTester.swift"
-            timestampString = "590190727.756438"
+            filePath = "SwiftLibreOOPWeb/LibreOOPClient.swift"
+            timestampString = "594076143.337877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "extensiveAlgorithmTestDelegate(patch:)"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "getOOPCurrentValue(from:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftLibreOOPWeb/LibreOOPClient.swift"
+            timestampString = "594076143.337918"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "getOOPCurrentValue(from:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftLibreOOPWeb/AlgorithmCalc/CalculateBounds.swift"
+            timestampString = "593904581.467031"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "getTemperatureLowerBound(temperatureToTest:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftLibreOOPWeb/AlgorithmCalc/AlgorithmCalc.swift"
+            timestampString = "594130440.406689"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "CalculateDerivedAlgorithm()"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>

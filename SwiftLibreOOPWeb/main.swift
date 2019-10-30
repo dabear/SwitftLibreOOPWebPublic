@@ -8,20 +8,28 @@
 import Foundation
 
 let accessToken = ""
-
 LibreUtils.accessToken = accessToken
 
-testMinuteCounterAffectingResult()
+
+var temp = LibreOOPDefaults.TestPatchAlwaysReturning63
+
+var calc = CalculateThresholds(for: temp)!
 
 /*
-let b64 = "Os8QFgMAAAAAAAAAAAAAAAAAAAAAAAAApdIIEK0CyNRbAKoCyLQbgKkCyJxbAKkCyIwbgLACyDBcgLACiOacgLgCyDydgLgCyGCdgKECyNyegKsCyBSegKkCyMCdgKsCyHidgKoCyECdgKgCyAidgKgCyCxcgK0CyPhbACkGyPSbgMkFyIzegMMFyCiegCwGyNCegHsGiKaegPkFyLCegJkFyPCegC4FyACfgIEEyEiggF0EyDidgBIEyBCegM8DyEyegG8DyLiegBkDyECfgMUCyPSegKoCyPhbAKIEyDiaANEEyCibgOQEyOAagI8EyCCbgCIGyFBbgLwGyFScgH8FyCRcgMkFyDhcgDgFyPQagDcHyIRbgPsIyEycgPsJyHybgHcKyORagN8JyIifgG0IyCyfgMMGyLCdgOUWAABywgAIggUJURQHloBaAO2mDm4ayATdWG0="
-//let arr = LibreOOPDefaults.TestPatchAlwaysReturning63
-let arr : [UInt8] =  b64.base64Decoded()!
+var result = calc.getAlgorithmThresholds(I_UNDERSTAND_THIS_WILL_TAKE_A_LONG_TIME: true)
+
+print("result for sensor:")
+
+ //var result = AlgorithmThresholds(glucoseLowerThreshold: 500, glucoseUpperThreshold: 5400, temperatureLowerThreshold: 5000, temperatureUpperThreshold: 12400, forSensorIdentifiedBy: 49778)
+
+debugPrint(result)
+
 */
 
-
+CalculateDerivedAlgorithm()
+extensiveAlgorithmTest()
 
 //This semaphore wait is neccessary when running as a mac os cli program. Consider removing this in a GUI app
 //it kinda works like python's input() or raw_input() in a cli program, except it doesn't accept input, ofcourse..
 let sema = DispatchSemaphore( value: 0 )
- sema.wait()
+sema.wait()

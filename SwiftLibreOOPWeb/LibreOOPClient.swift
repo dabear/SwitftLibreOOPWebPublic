@@ -75,7 +75,7 @@ class LibreOOPClient {
                     if (success) {
                         succeeded = true
                         newState2 = newState ?? ""
-                        oopCurrentValue = self.getOOPCurrentValue(from: response)
+                        oopCurrentValue = LibreOOPClient.getOOPCurrentValue(from: response)
                     } else {
                         error = errormsg
                     }
@@ -110,13 +110,14 @@ class LibreOOPClient {
         }
     }
 
-    private func getOOPCurrentValue(from response: String?) -> OOPCurrentValue? {
+    public static func getOOPCurrentValue(from response: String?) -> OOPCurrentValue? {
         // Decode json response string into OOPCurrentValue struct.
         // This requires to remove the beginning of the response string up to "FullAlgoResults"
         if let response = response,
             let jsonStringStartIndex = response.range(of: "FullAlgoResults: ")?.upperBound {
             do {
                 let jsonString = String(response.suffix(from: jsonStringStartIndex))
+                
                 if let jsonData = jsonString.data(using: .utf8) {
                     let oopCurrentValue = try JSONDecoder().decode(OOPCurrentValue.self, from: jsonData)
                     return oopCurrentValue
