@@ -124,7 +124,7 @@ func CalculateDerivedAlgorithm(){
     res2: 44.63596249310541
      */
     
-    let params = DerivedAlgorithmParameters(slope_slope: slope_slope, slope_offset: slope_offset, offset_slope: offset_slope, offset_offset: offset_offset, isValidForFooterWithReverseCRCs: 0) //set footer crc to invalid value on purpose for testing
+    let params = DerivedAlgorithmParameters(slope_slope: slope_slope, slope_offset: slope_offset, offset_slope: offset_slope, offset_offset: offset_offset, isValidForFooterWithReverseCRCs: 0, extraSlope: 1, extraOffset: 0) //set footer crc to invalid value on purpose for testing
     
     let runner = DerivedAlgorithmRunner(params)
     

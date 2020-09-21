@@ -131,24 +131,7 @@ func CreateDabearPatceshModifiedHeader() -> [SensorReading] {
     return patches
 }
 
-func GenerateMinutePatches() -> [SensorData]{
-    
-    var patches = [SensorData]()
-    
-    let template = LibreOOPDefaults.TestPatchAlwaysReturning63
-    let origMinutes = SensorData(bytes: template)!.minutesSinceStart
-    
-    
-    print("minutecounter orig: \(origMinutes)")
-    for minute in stride(from: 65, to: 266*4, by: 1) {
-        var data = SensorData(bytes: template)!
-        data.minutesSinceStart = minute
-        patches.append(data.sensorDataWithCorrectCRC())
-    }
-    
-    return patches
-    
-}
+
 
 func GenerateFakePatches(from patch: [UInt8]) -> [SensorReading]{
     //1000|4800

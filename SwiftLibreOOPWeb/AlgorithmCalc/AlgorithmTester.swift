@@ -176,48 +176,6 @@ fileprivate func testMinuteCounterAffectingResultDelegate(sensorData: SensorData
 }
 
 
-func testMinuteCounterAffectingResult() {
-    var patches : [SensorData] = Array(GenerateMinutePatches().prefix(10))
-    
-    
-    
-    for patch in patches {
-        print("patch minutes: \(patch.minutesSinceStart), crcs: \(patch.hasValidCRCs)")
-    }
-    print("number of sensors to test: \(patches.count)")
-    
-    let step = 15
-    let start = 0
-    
-    let delay = 40 //seconds
-    var groupdelay = 0
-    
-    //headers
-    writeGlucoseResult(folder: "GlucoseComparison", filename: "000_headers.txt", result: "currentTime|oopwebuid|currentBg|historicbg")
-    
-    for patchrangestart in stride(from: start, to:patches.count, by: step){
-        let patchrangeend = min(patchrangestart+step,  patches.count)
-  
-        let relevantPatches = patches[patchrangestart..<patchrangeend]
-        
-       
-        DispatchQueue.global().asyncAfter(deadline: .now() + .seconds(groupdelay)) { [relevantPatches] in
-            for  patch in relevantPatches{
-                testMinuteCounterAffectingResultDelegate(sensorData: patch)
-                
-            }
-            
-        }
-        
-        groupdelay += delay
-        
-    }
-    let now = Date()
-    let expectedRuntime = (groupdelay+delay)
-    let expectedEndDate = now + TimeInterval(exactly: expectedRuntime)!
-    print("time is now \(now), script execution will take about \(expectedRuntime) seconds and be complete about \(expectedEndDate )")
-    
-}
 
 func extensiveAlgorithmTest(){
     //let runner = DerivedAlgorithmRunner.CreateInstanceFromParamsFile()

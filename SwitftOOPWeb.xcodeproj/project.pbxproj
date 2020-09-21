@@ -17,6 +17,7 @@
 		27832B782178E762000FF6DD /* CreatePatches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27832B772178E762000FF6DD /* CreatePatches.swift */; };
 		27832B7A2178E78F000FF6DD /* DerivedAlgorithmRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27832B792178E78F000FF6DD /* DerivedAlgorithmRunner.swift */; };
 		27832B7C2178E8C0000FF6DD /* AlgorithmTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27832B7B2178E8C0000FF6DD /* AlgorithmTester.swift */; };
+		278D35CD25192C16001E74F6 /* DerivedAlgorithmParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278D35CC25192C16001E74F6 /* DerivedAlgorithmParameters.swift */; };
 		27BA004321734D80005B3E1D /* LibreUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BA004221734D80005B3E1D /* LibreUtils.swift */; };
 		27BA004521735450005B3E1D /* MoreExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BA004421735450005B3E1D /* MoreExamples.swift */; };
 		27D0586B208E4B41000A05D7 /* LibreOOPDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D0586A208E4B41000A05D7 /* LibreOOPDefaults.swift */; };
@@ -50,6 +51,7 @@
 		27832B772178E762000FF6DD /* CreatePatches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePatches.swift; sourceTree = "<group>"; };
 		27832B792178E78F000FF6DD /* DerivedAlgorithmRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerivedAlgorithmRunner.swift; sourceTree = "<group>"; };
 		27832B7B2178E8C0000FF6DD /* AlgorithmTester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmTester.swift; sourceTree = "<group>"; };
+		278D35CC25192C16001E74F6 /* DerivedAlgorithmParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DerivedAlgorithmParameters.swift; sourceTree = "<group>"; };
 		27BA004221734D80005B3E1D /* LibreUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibreUtils.swift; sourceTree = "<group>"; };
 		27BA004421735450005B3E1D /* MoreExamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreExamples.swift; sourceTree = "<group>"; };
 		27D0586A208E4B41000A05D7 /* LibreOOPDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibreOOPDefaults.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 		27832B742178E6E8000FF6DD /* AlgorithmCalc */ = {
 			isa = PBXGroup;
 			children = (
+				278D35CC25192C16001E74F6 /* DerivedAlgorithmParameters.swift */,
 				27832B752178E722000FF6DD /* AlgorithmCalc.swift */,
 				27832B772178E762000FF6DD /* CreatePatches.swift */,
 				27832B792178E78F000FF6DD /* DerivedAlgorithmRunner.swift */,
@@ -199,6 +202,7 @@
 				2752E1AF207A1B5B00BCDC08 /* main.swift in Sources */,
 				27832B762178E722000FF6DD /* AlgorithmCalc.swift in Sources */,
 				C66625C1208B1EB10044D0B1 /* SensorState.swift in Sources */,
+				278D35CD25192C16001E74F6 /* DerivedAlgorithmParameters.swift in Sources */,
 				27832B7C2178E8C0000FF6DD /* AlgorithmTester.swift in Sources */,
 				C66625BF208B1E820044D0B1 /* SensorData.swift in Sources */,
 				27D0586B208E4B41000A05D7 /* LibreOOPDefaults.swift in Sources */,
