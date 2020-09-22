@@ -41,6 +41,91 @@ fileprivate func writeGlucoseResult(folder: String, filename:String, result: Str
     }
 }
 
+
+func measurementToOOPResult(from sensorData: SensorData, measurement: Measurement) -> Double{
+    return LibreUtils.GetParsedOOPResult(patch: LibreUtils.CreateFakePatch(fromPatch: sensorData.bytes, raw_glucose: UInt16(measurement.rawGlucose), raw_temp: UInt16(measurement.rawTemperature)))!.currentBg
+
+}
+
+
+func testRussiaAlg(sensorData data: SensorData) {
+
+    let client = LibreOOPClient(accessToken: accessToken)
+
+    client.uploadCalibration(reading: data.bytes) { (response, success, errormessage) in
+
+
+        if(!success) {
+            NSLog("remote uploadCalibration: upload reading failed! \(errormessage)")
+
+            return
+        }
+
+        guard let response = response else {
+            print("get reponse failed")
+            return
+        }
+
+
+        print("calibration uuid received: " + response.uuid)
+
+        client.getCalibrationStatusIntervalled(uuid: response.uuid,  { (success, errormessage, calibrationparams) in
+            NSLog("getCalibrationStatusIntervalled returned with success?: \(success), error: \(errormessage)")
+
+            guard let params = calibrationparams else {
+                print("calibrationparams was not retrieved, aborting")
+                return
+            }
+
+            print("Comparing....")
+
+            let calibrationInfo = data.calibrationData
+
+            writeGlucoseResult(folder: "GlucoseComparison", filename: "000_headers.txt", result: "Anonymoussensorid|RawTemperature|RawGlucose|DerivedAlgorithmRounded|RussiaAlgorithmRounded|AbbotAlgorithm\n")
+
+
+            for measurement in (data.trendMeasurements(derivedAlgorithmParameterSet: params)+data.historyMeasurements(derivedAlgorithmParameterSet: params)) {
+                //.temperatureAlgorithmGlucose = derived algorithm fed with libreoopweb calibrationdata
+
+
+                //sensorid is often not known, we use footer crc as a pseudo unique identificator
+                var sensorid = data.reverseFooterCRC!
+                let derived = round(measurement.temperatureAlgorithmGlucose)
+                let russia = round(measurement.glucoseValueFromRaw(calibrationInfo: calibrationInfo))
+                let abbott = measurementToOOPResult(from: data, measurement: measurement)
+
+                let rawtemperature = measurement.rawTemperature
+                let rawglucose = measurement.rawGlucose
+
+                let measurementdate = measurement.date
+
+
+                let csvline = "\(sensorid)|\(rawtemperature)|\(rawglucose)|\(derived)|\(russia)|\(abbott)"
+                writeGlucoseResult(folder: "GlucoseComparison", filename: "\(measurementdate).txt", result: csvline)
+
+            }
+
+
+        })
+
+        print("Done")
+
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 //
 // Secondary entrypoint. Call this function if you have already saved parameters to file and want to test with a few values
 //
