@@ -113,10 +113,14 @@ public struct SensorData: Codable {
     }
 
     var humanReadableSensorAge: String {
-        let sensorStart = Calendar.current.date(byAdding: .minute, value: -self.minutesSinceStart, to: self.date)!
 
-        return ""
-        //return  sensorStart.timeIntervalSinceNow.stringDaysFromTimeInterval() +  " day(s)"
+        let aday = 86_400.0 //in seconds
+        let days = TimeInterval(minutesSinceStart * 60) / aday
+
+        return String(format: "%.2f", days) + " day(s)"
+
+
+
     }
 
     var toJson : String {
