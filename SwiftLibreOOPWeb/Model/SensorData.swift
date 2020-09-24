@@ -112,16 +112,20 @@ public struct SensorData: Codable {
 
     }
 
+    fileprivate let aday = 86_400.0 //in seconds
+
     var humanReadableSensorAge: String {
-
-        let aday = 86_400.0 //in seconds
         let days = TimeInterval(minutesSinceStart * 60) / aday
-
         return String(format: "%.2f", days) + " day(s)"
 
-
-
     }
+
+    var humanReadableTimeLeft: String {
+        let days = TimeInterval(minutesLeft * 60) / aday
+        return String(format: "%.2f", days) + " day(s)"
+    }
+
+
 
     var toJson : String {
         "[" + self.bytes.map{ String(format: "0x%02x", $0) }.joined(separator: ", ") + "]"
