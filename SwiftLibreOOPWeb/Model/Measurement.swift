@@ -8,8 +8,29 @@
 
 import Foundation
 
+protocol MeasurementProtocol {
+    var rawGlucose: Int { get }
+    /// The raw temperature as read from the sensor
+    var rawTemperature: Int { get }
+
+
+    var rawTemperatureAdjustment: Int { get }
+
+}
+
+struct SimplifiedMeasurement : MeasurementProtocol {
+    var rawGlucose: Int
+
+    var rawTemperature: Int
+
+    var rawTemperatureAdjustment: Int = 0
+
+
+}
+
+
 /// Structure for one glucose measurement including value, date and raw data bytes
-struct Measurement {
+struct Measurement : MeasurementProtocol{
     /// The date for this measurement
     let date: Date
     /// The minute counter for this measurement
@@ -48,6 +69,11 @@ struct Measurement {
     let oopOffset: Double
     ///
     let temperatureAlgorithmParameterSet: DerivedAlgorithmParameters?
+
+
+    
+
+
 
     ///
     /// - parameter bytes:  raw data bytes as read from the sensor

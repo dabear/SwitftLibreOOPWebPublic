@@ -13,6 +13,12 @@ import Foundation
 class LibreUtils {
     
     public static var accessToken: String = "someaccesstoken"
+
+    public static func CreateFakeSensorData(fromPatch patch:[UInt8]=LibreOOPDefaults.TestPatchAlwaysReturning63, raw_glucose: UInt16?=nil, raw_temp: UInt16?=nil) -> SensorData?{
+        var patch = CreateFakePatch(fromPatch: patch, raw_glucose:raw_glucose, raw_temp: raw_temp)
+        return SensorData(bytes: patch)
+
+    }
    
     public static func CreateFakePatch(fromPatch patch:[UInt8]=LibreOOPDefaults.TestPatchAlwaysReturning63, raw_glucose: UInt16?=nil, raw_temp: UInt16?=nil) -> [UInt8]{
         
