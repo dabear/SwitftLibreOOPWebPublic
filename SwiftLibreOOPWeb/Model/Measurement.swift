@@ -31,6 +31,8 @@ struct SimplifiedMeasurement : MeasurementProtocol {
 
 /// Structure for one glucose measurement including value, date and raw data bytes
 struct Measurement : MeasurementProtocol{
+    var rawTemperatureAdjustment: Int = 0
+
     /// The date for this measurement
     let date: Date
     /// The minute counter for this measurement
@@ -71,6 +73,19 @@ struct Measurement : MeasurementProtocol{
     let temperatureAlgorithmParameterSet: DerivedAlgorithmParameters?
 
 
+    func roundedGlucoseValueFromRaw(calibrationInfo: SensorData.CalibrationInfo) -> Int {
+        Int(round(glucoseValueFromRaw(calibrationInfo: calibrationInfo)))
+    }
+
+    func roundedGlucoseValueFromRaw2(calibrationInfo: SensorData.CalibrationInfo) -> Double{
+        round(glucoseValueFromRaw(calibrationInfo: calibrationInfo))
+    }
+
+
+    func glucoseValueFromRaw(calibrationInfo: SensorData.CalibrationInfo) -> Double {
+        //todo
+        return 39
+    }
     
 
 
